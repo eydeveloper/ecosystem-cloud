@@ -1,3 +1,4 @@
 {
-  "serverPort": 5000
+  "serverPort": 5000,
+  "dbUrl": "mongodb+srv://eydeveloper:iPass2020ecosystem-cloud@cloud.2arrfb5.mongodb.net/?retryWrites=true&w=majority"
 }
