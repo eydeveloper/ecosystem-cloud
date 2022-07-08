@@ -7,7 +7,7 @@ router.get('/getData',
   async (request: Request, response: Response) => {
     try {
       const accountId = request.query.userId;
-      let user = await User.findOne({userId: accountId});
+      let user = await User.findOne({accountId: accountId});
 
       if (!user) {
         user = new User({accountId});
