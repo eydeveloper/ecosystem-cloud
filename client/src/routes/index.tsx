@@ -9,8 +9,6 @@ export enum RouteNames {
   CLOUD = '/'
 }
 
-export const publicRoutes: IRoute[] = [];
-
 export const privateRoutes: IRoute[] = [
   {path: RouteNames.CLOUD, element: <Cloud />}
 ];

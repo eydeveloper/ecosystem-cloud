@@ -2,7 +2,7 @@ import Typography from '@mui/material/Typography';
 import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
 
-const Index: FC = () => {
+const HeaderLogo: FC = () => {
   return (
     <React.Fragment>
       <LogoDesktop />
@@ -51,4 +51,4 @@ const LogoMobile = () => (
   </Typography>
 );
 
-export default Index;
+export default HeaderLogo;

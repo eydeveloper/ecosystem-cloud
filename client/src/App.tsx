@@ -1,13 +1,13 @@
 import {CssBaseline} from '@mui/material';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import React, {FC, useEffect} from 'react';
-import {useAppSelector} from '../../hooks/useAppSelector';
-import {authApi} from '../../services/auth/AuthService';
-import {saveJwtToken} from '../../utils/jwt';
-import Loader from '../Common/Loader';
-import Header from '../Header';
+import {useAppSelector} from './hooks/useAppSelector';
+import {authApi} from './services/auth/AuthService';
+import {saveJwtToken} from './utils/jwt';
+import Loader from './components/common/Loader';
+import Header from './components/header/Header';
 import './App.css';
-import AppRouter from './AppRouter';
+import AppRouter from './components/AppRouter';
 
 const theme = createTheme({
   palette: {
