@@ -11,7 +11,7 @@ interface AuthError {
 }
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `${process.env.REACT_APP_ACCOUNT_API_URL}/api/auth`,
+  baseUrl: `${process.env.REACT_APP_ACCOUNT_API_URL}/auth`,
   prepareHeaders: (headers) => {
     const token = Cookies.get('jwtToken');
 
