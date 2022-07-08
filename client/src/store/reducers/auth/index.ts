@@ -1,5 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 import {IUser} from '../../../models/IUser';
+import {authApi} from '../../../services/auth/AuthService';
 import {AuthState} from './types';
 
 const initialState: AuthState = {
@@ -9,10 +11,34 @@ const initialState: AuthState = {
   error: ''
 };
 
-const authSlice = createSlice({
-  name: 'users',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
-  reducers: {}
+  reducers: {
+    logout(state: AuthState) {
+      Cookies.remove('jwtToken');
+      state.isAuthorized = false;
+      window.location.href = `${process.env.REACT_APP_ACCOUNT_URL}/login`;
+    }
+  },
+  extraReducers: builder => {
+    builder.addMatcher(
+      authApi.endpoints.verify.matchFulfilled,
+      (state, action) => {
+        state.isAuthorized = true;
+        state.user = {...action.payload.user, accountId: action.payload.user.id};
+      }
+    );
+
+    builder.addMatcher(
+      authApi.endpoints.verify.matchRejected,
+      (state) => {
+        state.isAuthorized = false;
+        window.location.href = `${process.env.REACT_APP_ACCOUNT_URL}/login`;
+      }
+    );
+  }
 });
 
+export const {logout} = authSlice.actions;
 export default authSlice.reducer;
