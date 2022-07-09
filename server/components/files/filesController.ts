@@ -16,8 +16,8 @@ export default class FilesController {
 
   public static async getFiles(request: Request, response: Response) {
     try {
-      const {user, parent} = request.query;
-      const files = await File.find({user, parent});
+      const {userId, parentId} = request.query;
+      const files = await File.find({userId, parentId});
       response.send(files);
     } catch (error) {
       errorHandler.handleError(error, response);
