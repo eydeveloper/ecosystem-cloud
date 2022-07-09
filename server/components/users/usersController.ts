@@ -1,31 +1,17 @@
 import {Request, Response} from 'express';
-import {UsersError} from './usersError';
+import {errorHandler} from '../../handlers/errorHandler';
+import FilesServices from '../files/filesServices';
 import UsersServices from './usersServices';
 
 export default class UsersController {
-  static async getByAccountId(request: Request, response: Response) {
+  public static async getByAccountId(request: Request, response: Response) {
     try {
-      const accountId = request.query.accountId;
-
-      if (!accountId) {
-        throw new UsersError('Не удалось получить идентификатор пользователя.', 400);
-      }
-
-      let user = await UsersServices.findOne({accountId});
-
-      if (!user) {
-        user = await UsersServices.create({accountId});
-      }
-
-      const {id, limitSpace, usedSpace} = user;
-
-      response.send({user: {id, limitSpace, usedSpace}});
+      const accountId = String(request.query.accountId);
+      const user = await UsersServices.getByAccountId(accountId);
+      await FilesServices.createRootDirectory(user.id);
+      response.send(user);
     } catch (error) {
-      if (error instanceof UsersError) {
-        response.status(error.httpCode).send({message: error.message});
-      } else {
-        response.status(500).send({message: 'Произошла неизвестная ошибка.'});
-      }
+      errorHandler.handleError(error, response);
     }
   }
 }

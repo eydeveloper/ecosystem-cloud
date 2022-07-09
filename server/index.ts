@@ -3,6 +3,7 @@ import express, {Express} from 'express';
 import {connect} from 'mongoose';
 import corsMiddleware from './middleware/corsMiddleware';
 import userRouter from './components/users/usersRoutes';
+import filesRouter from './components/files/filesRoutes';
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 5000;
@@ -10,6 +11,7 @@ const port: number = Number(process.env.PORT) || 5000;
 app.use(corsMiddleware);
 app.use(express.json());
 app.use('/api/users', userRouter);
+app.use('/api/files', filesRouter);
 
 const start = async () => {
   try {

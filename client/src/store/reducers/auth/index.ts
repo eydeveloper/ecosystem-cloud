@@ -24,7 +24,7 @@ export const authSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       authApi.endpoints.verify.matchFulfilled,
-      (state, action) => {
+      (state: AuthState, action) => {
         state.isAuthorized = true;
         state.user = {...action.payload.user, accountId: action.payload.user.id};
       }
@@ -32,7 +32,7 @@ export const authSlice = createSlice({
 
     builder.addMatcher(
       authApi.endpoints.verify.matchRejected,
-      (state) => {
+      (state: AuthState) => {
         state.isAuthorized = false;
         window.location.href = `${process.env.REACT_APP_ACCOUNT_URL}/login`;
       }

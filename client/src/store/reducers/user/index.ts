@@ -14,10 +14,10 @@ export const userSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       userApi.endpoints.getByAccountId.matchFulfilled,
-      (state, action) => {
-        state.user.id = action.payload.user.id;
-        state.user.limitSpace = action.payload.user.limitSpace;
-        state.user.usedSpace = action.payload.user.usedSpace;
+      (state: UserState, action) => {
+        state.user.id = action.payload;
+        state.user.limitSpace = action.payload.limitSpace;
+        state.user.usedSpace = action.payload.usedSpace;
       }
     );
   }
