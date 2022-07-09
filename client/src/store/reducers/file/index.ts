@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {fileApi} from '../../../services/cloud/FileService';
-import {FileState} from './types';
+import {FileState, GetFilesAction} from './types';
 
 const initialState: FileState = {
   files: [],
@@ -14,7 +14,7 @@ export const fileSlice = createSlice({
   extraReducers: builder => {
     builder.addMatcher(
       fileApi.endpoints.getFiles.matchFulfilled,
-      (state: FileState, action) => {
+      (state: FileState, action: GetFilesAction) => {
         state.files = action.payload;
       }
     );

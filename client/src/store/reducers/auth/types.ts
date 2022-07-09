@@ -6,3 +6,7 @@ export interface AuthState {
   isLoading: boolean;
   error: string;
 }
+
+export interface VerifyActionSuccess {
+  payload: {user: IUser};
+}

@@ -1,11 +1,11 @@
-import {model, Schema, Types} from 'mongoose';
+import {Document, model, Schema, Types} from 'mongoose';
 
-interface IUser {
-  id: string;
+export interface IUser extends Document {
+  id: { type: Types.ObjectId, ref: 'User' };
   accountId: string;
   limitSpace: number;
   usedSpace: number;
-  files: any[];
+  files: [{ type: Types.ObjectId, ref: 'File' }];
 }
 
 const userSchema = new Schema<IUser>({

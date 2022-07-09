@@ -1,24 +1,31 @@
-import {Request, Response} from 'express';
-import {errorHandler} from '../../handlers/errorHandler';
-import File, {IFile} from './file';
-import {CreateDirectoryRequest} from './filesRequests';
+import {TypedRequestBody} from '../../core/types/typedRequestBody';
+import {TypedRequestQuery} from '../../core/types/typedRequestQuery';
+import {TypedResponse} from '../../core/types/typedResponse';
+import {errorHandler} from '../../core/handlers/errorHandler';
+import {IFile} from './file';
 import FilesServices from './filesServices';
 
 export default class FilesController {
-  public static async createDirectory(request: CreateDirectoryRequest<IFile>, response: Response) {
+  static async getFiles(
+    request: TypedRequestQuery<{ userId: string; parentId: string }>,
+    response: TypedResponse<IFile[]>
+  ) {
     try {
-      const directory = await FilesServices.createDirectory(request);
-      response.send(directory);
+      const {userId, parentId} = request.query;
+      const files = await FilesServices.getFiles(userId, parentId);
+      response.json(files);
     } catch (error) {
       errorHandler.handleError(error, response);
     }
   }
 
-  public static async getFiles(request: Request, response: Response) {
+  static async createDirectory(
+    request: TypedRequestBody<IFile>,
+    response: TypedResponse<IFile>
+  ) {
     try {
-      const {userId, parentId} = request.query;
-      const files = await File.find({userId, parentId});
-      response.send(files);
+      const directory = await FilesServices.createDirectory(request.body);
+      response.json(directory);
     } catch (error) {
       errorHandler.handleError(error, response);
     }

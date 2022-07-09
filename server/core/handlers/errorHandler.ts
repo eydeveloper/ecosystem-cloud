@@ -1,5 +1,5 @@
 import {Response} from 'express';
-import {AppError} from '../exceptions/appError';
+import {AppError} from '../errors/appError';
 
 class ErrorHandler {
   public handleError(error: any, response: Response) {

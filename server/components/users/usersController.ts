@@ -1,15 +1,20 @@
-import {Request, Response} from 'express';
-import {errorHandler} from '../../handlers/errorHandler';
+import {TypedRequestQuery} from '../../core/types/typedRequestQuery';
+import {TypedResponse} from '../../core/types/typedResponse';
+import {errorHandler} from '../../core/handlers/errorHandler';
 import FilesServices from '../files/filesServices';
+import {IUser} from './user';
 import UsersServices from './usersServices';
 
 export default class UsersController {
-  public static async getByAccountId(request: Request, response: Response) {
+  static async getByAccountId(
+    request: TypedRequestQuery<{ accountId: string }>,
+    response: TypedResponse<IUser>
+  ) {
     try {
-      const accountId = String(request.query.accountId);
+      const {accountId} = request.query;
       const user = await UsersServices.getByAccountId(accountId);
-      await FilesServices.createRootDirectory(user.id);
-      response.send(user);
+      await FilesServices.createRootDirectory(user.id.toString());
+      response.json(user);
     } catch (error) {
       errorHandler.handleError(error, response);
     }

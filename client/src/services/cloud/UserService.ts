@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {IUser} from '../../models/IUser';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
@@ -7,7 +8,7 @@ export const userApi = createApi({
   }),
   tagTypes: ['User'],
   endpoints: build => ({
-    getByAccountId: build.query<any, { accountId: string }>({
+    getByAccountId: build.query<IUser, { accountId: string }>({
       query: (arg) => {
         const {accountId} = arg;
         return {
