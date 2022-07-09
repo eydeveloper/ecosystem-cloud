@@ -10,9 +10,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
-import React, {FC, useEffect} from 'react';
+import React, {FC} from 'react';
+import {useAppSelector} from '../../hooks/useAppSelector';
 import {IFile} from '../../models/IFile';
-import {IUser} from '../../models/IUser';
 import {fileApi} from '../../services/cloud/FileService';
 import {HasChildren} from '../types/HasChildren';
 
@@ -20,29 +20,9 @@ const CloudWorkspace = () => {
   const [dense, setDense] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
-  const {data, isLoading} = fileApi.useGetFilesQuery({user: {id: '62c79c77892c958192c78ed0'} as IUser, parent: {id: ''} as IFile} as IFile);
-
-  // useEffect(() => {
-  //
-  // }, [data])
-
-  // const files = [
-  //   {
-  //     name: 'Директория 1',
-  //     createdDate: '15:36 09-07-2022',
-  //     size: '-'
-  //   },
-  //   {
-  //     name: 'Директория 2',
-  //     createdDate: '15:36 09-07-2022',
-  //     size: '-'
-  //   },
-  //   {
-  //     name: 'Файл 1',
-  //     createdDate: '15:36 09-07-2022',
-  //     size: '3,6 МБ'
-  //   }
-  // ];
+  const {user} = useAppSelector(state => state.user)
+  const {file} = useAppSelector(state => state.file)
+  const {data, isLoading} = fileApi.useGetFilesQuery({userId: user.id, parentId: } as IFile);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
