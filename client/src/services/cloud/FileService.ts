@@ -15,7 +15,22 @@ export const fileApi = createApi({
           url: '/',
           params: {userId, parentId}
         };
-      }
+      },
+      providesTags: () => ['File']
+    }),
+
+    createDirectory: build.mutation<IFile, IFile>({
+      query: ({name, userId, parentId}) => ({
+        url: '/createDirectory',
+        method: 'POST',
+        body: {
+          name,
+          type: 'directory',
+          userId,
+          parentId
+        }
+      }),
+      invalidatesTags: ['File']
     })
   })
 });

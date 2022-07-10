@@ -38,7 +38,7 @@ const CloudListItem: FC<CloudListItemProps> = (
         sx={{width: 0.25}}
       />
       <ListItemText
-        secondary={size}
+        secondary={size || '–'}
         sx={{width: 0.25}}
       />
     </ListItem>

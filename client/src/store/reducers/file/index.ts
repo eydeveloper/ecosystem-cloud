@@ -5,13 +5,22 @@ import {FileState, GetFilesAction} from './types';
 
 const initialState: FileState = {
   files: [],
-  currentDirectory: {} as IFile
+  currentDirectory: {} as IFile,
+  createDirectoryDialog: false
 };
 
 export const fileSlice = createSlice({
   name: 'file',
   initialState,
-  reducers: {},
+  reducers: {
+    openCreateDirectoryDialog(state: FileState) {
+      state.createDirectoryDialog = true;
+    },
+
+    closeCreateDirectoryDialog(state: FileState) {
+      state.createDirectoryDialog = false;
+    }
+  },
   extraReducers: builder => {
     builder.addMatcher(
       fileApi.endpoints.getFiles.matchFulfilled,
@@ -19,7 +28,16 @@ export const fileSlice = createSlice({
         state.files = action.payload;
       }
     );
+
+    builder.addMatcher(
+      fileApi.endpoints.createDirectory.matchFulfilled,
+      (state: FileState, action) => {
+        state.files.push(action.payload);
+      }
+    );
   }
 });
+
+export const {openCreateDirectoryDialog, closeCreateDirectoryDialog} = fileSlice.actions;
 
 export default fileSlice.reducer;
