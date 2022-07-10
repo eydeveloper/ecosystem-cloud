@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {authApi} from '../services/auth/AuthService';
-import {fileApi} from '../services/cloud/FileService';
-import {userApi} from '../services/cloud/UserService';
+import {authApi} from '../services/AuthService';
+import {fileApi} from '../services/FileService';
+import {userApi} from '../services/UserService';
 import reducers from './reducers';
 
 const rootReducer = combineReducers({

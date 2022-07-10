@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {IFile} from '../../../models/IFile';
-import {fileApi} from '../../../services/cloud/FileService';
+import {fileApi} from '../../../services/FileService';
 import {FileState, GetFilesAction} from './types';
 
 const initialState: FileState = {

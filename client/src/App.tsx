@@ -6,7 +6,7 @@ import AppRouter from './components/AppRouter';
 import PageLoader from './components/Common/PageLoader/PageLoader';
 import Header from './components/Header/Header';
 import {useAppSelector} from './hooks/useAppSelector';
-import {authApi} from './services/auth/AuthService';
+import {authApi} from './services/AuthService';
 import {setJwtToken} from './utils/jwt';
 
 const App: FC = () => {

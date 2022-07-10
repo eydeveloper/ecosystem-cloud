@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {IUser} from '../../../models/IUser';
-import {userApi} from '../../../services/cloud/UserService';
+import {userApi} from '../../../services/UserService';
 import {GetByAccountIdAction, UserState} from './types';
 
 const initialState: UserState = {

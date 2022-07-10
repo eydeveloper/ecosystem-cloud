@@ -8,7 +8,7 @@ import {useState} from 'react';
 import {useAppDispatch} from '../../../hooks/useAppDispatch';
 import {useAppSelector} from '../../../hooks/useAppSelector';
 import {IFile} from '../../../models/IFile';
-import {fileApi} from '../../../services/cloud/FileService';
+import {fileApi} from '../../../services/FileService';
 import {closeCreateDirectoryDialog} from '../../../store/reducers/file';
 import TextFieldVariantStandard from '../../Common/TextField/_variant/TextField_variant_standart';
 import styles from './CreateDirectoryDialog.module.css';

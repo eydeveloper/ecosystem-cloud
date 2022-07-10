@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {IUser} from '../../../models/IUser';
-import {authApi} from '../../../services/auth/AuthService';
+import {authApi} from '../../../services/AuthService';
 import {removeJwtToken} from '../../../utils/jwt';
 import {AuthState, VerifyActionSuccess} from './types';
 

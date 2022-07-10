@@ -1,7 +1,7 @@
 import {BaseQueryFn, createApi, FetchArgs, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {AuthError} from '../../errors/AuthError';
-import {IAuth} from '../../models/IAuth';
-import {getJwtToken} from '../../utils/jwt';
+import {AuthError} from '../errors/AuthError';
+import {IAuth} from '../models/IAuth';
+import {getJwtToken} from '../utils/jwt';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${process.env.REACT_APP_ACCOUNT_API_URL}/auth`,

@@ -1,5 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {IFile} from '../../models/IFile';
+import {IFile} from '../models/IFile';
 
 export const fileApi = createApi({
   reducerPath: 'fileApi',

@@ -14,7 +14,7 @@ import React from 'react';
 import {useAppDispatch} from '../../hooks/useAppDispatch';
 import {useAppSelector} from '../../hooks/useAppSelector';
 import {IFile} from '../../models/IFile';
-import {fileApi} from '../../services/cloud/FileService';
+import {fileApi} from '../../services/FileService';
 import {openCreateDirectoryDialog} from '../../store/reducers/file';
 import TypographyVariantH6 from '../Common/Typography/_variant/Typography_variant_h6';
 import CreateDirectoryDialog from '../Dialogs/CreateDirectoryDialog/CreateDirectoryDialog';
@@ -52,8 +52,8 @@ const Workspace = () => {
         </Button>
       </Box>
 
-      <Box className={styles.ListContainer}>
-        <Box className={styles.ListHeader}>
+      <Box className={styles.TableContainer}>
+        <Box className={styles.TableHeader}>
           <TypographyVariantH6>
             Файлы
           </TypographyVariantH6>
@@ -62,7 +62,7 @@ const Workspace = () => {
           </IconButton>
         </Box>
 
-        <List dense={dense}>
+        <List className={styles.TableList} dense={dense}>
           <ListItem className={styles.TableListHeader}>
             <ListItemText
               className={styles.TableListColumn}
