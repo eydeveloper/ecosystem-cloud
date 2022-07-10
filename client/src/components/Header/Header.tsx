@@ -14,10 +14,10 @@ const Header: FC = () => {
   const {isAuthorized} = useAppSelector(state => state.auth);
 
   return (
-    <AppBar className={styles.Bar}>
-      <Container className={styles.Container}>
-        <Toolbar className={styles.Toolbar}>
-          <TypographyVariantH6 className={styles.Logo}>
+    <AppBar className={styles['Bar']}>
+      <Container className={styles['Container']}>
+        <Toolbar className={styles['Toolbar']}>
+          <TypographyVariantH6 className={styles['Logo']}>
             <Link to="/">Экосистема.Облако</Link>
           </TypographyVariantH6>
           <Box>

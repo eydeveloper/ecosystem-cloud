@@ -33,12 +33,12 @@ const HeaderMenu: FC = () => {
   return (
     <React.Fragment>
       <Tooltip title={`${user.firstName} ${user.lastName}`}>
-        <IconButton className={styles.HeaderIconButton} onClick={handleOpenUserMenu}>
+        <IconButton className={styles['Header-Icon-Button']} onClick={handleOpenUserMenu}>
           <Avatar alt={user.firstName} src="/" />
         </IconButton>
       </Tooltip>
       <Menu
-        className={styles.Menu}
+        className={styles['Menu']}
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
         anchorEl={anchorElUser}

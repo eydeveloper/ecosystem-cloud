@@ -7,7 +7,7 @@
   margin-right: 16px;
 }
 
-.CreateButton {
+.Create-Button {
   padding: 16px;
   text-transform: none;
   color: inherit;
@@ -16,50 +16,69 @@
   box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
 }
 
-.TableContainer {
+.Table {
   flex: 1;
-}
 
-.TableHeader {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 8px;
-}
+  &-Header {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 16px;
+    padding-right: 20px;
+    padding-bottom: 8px;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
 
-.TableHeaderTitle {
-  user-select: none;
-}
+    &-Title {
+      user-select: none;
+    }
 
-.TableList {
-  overflow-y: auto;
-  max-height: calc(100vh - 200px);
-  scrollbar-gutter: stable;
-
-  &::-webkit-scrollbar {
-    width: 10px;
+    &-Controls {
+      display: flex;
+      gap: 10px;
+    }
   }
 
-  &::-webkit-scrollbar-thumb {
-    background-color: lightgray;
+  &-List {
+    padding-top: 0;
+
+    &-Header {
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    }
+
+    &-Column {
+      width: 25%;
+      user-select: none;
+
+      &:first-child {
+        display: flex;
+        width: 50%;
+      }
+    }
+
+    &-Items {
+      overflow-y: auto;
+      max-height: calc(100vh - 200px);
+      border-right: 1px solid rgba(0, 0, 0, 0.12);
+      scrollbar-gutter: stable;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: lightgray;
+      }
+    }
+
+    &-Item {
+      padding-right: 5px;
+
+      &-Button {
+        padding-right: 0;
+        padding-left: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      }
+    }
   }
-}
-
-.TableListHeader {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.TableListColumn {
-  width: 25%;
-  user-select: none;
-}
-
-.TableListColumn:first-child {
-  display: flex;
-  width: 50%;
-}
-
-.TableListItemButton {
-  padding-right: 0;
-  padding-left: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }

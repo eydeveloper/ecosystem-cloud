@@ -39,7 +39,7 @@ export default function CreateDirectoryDialog() {
 
   return (
     <Dialog open={createDirectoryDialog} onClose={handleCloseCreateDirectoryDialog}>
-      <DialogTitle className={styles.DialogTitle}>Новая папка</DialogTitle>
+      <DialogTitle className={styles['Dialog-Title']}>Новая папка</DialogTitle>
       <DialogContent>
         <TextFieldVariantStandard
           value={directoryName}

@@ -2,7 +2,7 @@ import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutl
 import DeleteIcon from '@mui/icons-material/Delete';
 import FolderIcon from '@mui/icons-material/Folder';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
-import {Paper} from '@mui/material';
+import ViewCompactOutlined from '@mui/icons-material/ViewCompactOutlined';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -42,10 +42,10 @@ const Workspace = () => {
   };
 
   return (
-    <Box className={styles.Container}>
-      <Box className={styles.Sidebar}>
+    <Box className={styles['Container']}>
+      <Box className={styles['Sidebar']}>
         <Button
-          className={styles.CreateButton}
+          className={styles['Create-Button']}
           onClick={handleOpenCreateDirectoryDialog}
           startIcon={<CreateNewFolderOutlinedIcon />}
         >
@@ -53,58 +53,65 @@ const Workspace = () => {
         </Button>
       </Box>
 
-      <Box className={styles.TableContainer}>
-        <Box className={styles.TableHeader}>
-          <TypographyVariantH6 className={styles.TableHeaderTitle}>
-            Файлы
+      <Box className={styles['Table']}>
+        <Box className={styles['Table-Header']}>
+          <TypographyVariantH6 className={styles['Table-Header-Title']}>
+            Мои файлы
           </TypographyVariantH6>
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
+          <Box className={styles['Table-Header-Controls']}>
+            <IconButton>
+              <DeleteIcon />
+            </IconButton>
+            <Box>
+              <IconButton>
+                <ViewCompactOutlined />
+              </IconButton>
+            </Box>
+          </Box>
         </Box>
 
-        <List dense={dense}>
-          <ListItem className={styles.TableListHeader}>
+        <List className={styles['Table-List']} dense={dense}>
+          <ListItem className={styles['Table-List-Header']}>
             <ListItemText
-              className={styles.TableListColumn}
+              className={styles['Table-List-Column']}
               secondary="Название"
             />
             <ListItemText
-              className={styles.TableListColumn}
+              className={styles['Table-List-Column']}
               secondary="Дата создания"
             />
             <ListItemText
-              className={styles.TableListColumn}
+              className={styles['Table-List-Column']}
               secondary="Размер файла"
             />
           </ListItem>
 
-          <Box className={styles.TableList}>
-          {isSuccess && files.map((file, index) =>
-            <ListItemButton
-              className={styles.TableListItemButton}
-              key={file.id}
-              onClick={(event) => handleItemClick(event, index)}
-              selected={selectedItemIndex === index}
-            >
-              <ListItem>
-                <Box className={styles.TableListColumn}>
-                  <ListItemIcon>
-                    {file.type === 'directory' ? <FolderIcon /> : <InsertDriveFileIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={file.name} />
-                </Box>
-                <ListItemText
-                  className={styles.TableListColumn}
-                  secondary={new Date(file.createdDate).toLocaleDateString()}
-                />
-                <ListItemText
-                  className={styles.TableListColumn}
-                  secondary={file.size || '–'}
-                />
-              </ListItem>
-            </ListItemButton>
-          )}
+          <Box className={styles['Table-List-Items']}>
+            {isSuccess && files.map((file, index) =>
+              <ListItemButton
+                className={styles['Table-List-Item-Button']}
+                key={file.id}
+                onClick={(event) => handleItemClick(event, index)}
+                selected={selectedItemIndex === index}
+              >
+                <ListItem className={styles['Table-List-Item']}>
+                  <Box className={styles['Table-List-Column']}>
+                    <ListItemIcon>
+                      {file.type === 'directory' ? <FolderIcon /> : <InsertDriveFileIcon />}
+                    </ListItemIcon>
+                    <ListItemText primary={file.name} />
+                  </Box>
+                  <ListItemText
+                    className={styles['Table-List-Column']}
+                    secondary={new Date(file.createdDate).toLocaleDateString()}
+                  />
+                  <ListItemText
+                    className={styles['Table-List-Column']}
+                    secondary={file.size || '–'}
+                  />
+                </ListItem>
+              </ListItemButton>
+            )}
           </Box>
         </List>
       </Box>
