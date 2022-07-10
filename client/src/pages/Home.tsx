@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
-import CloudWorkspace from '../components/cloud/CloudWorkspace';
+import Workspace from '../components/Home/Workspace';
 import {useAppSelector} from '../hooks/useAppSelector';
 import {userApi} from '../services/cloud/UserService';
 
-const Cloud: FC = () => {
+const Home: FC = () => {
   const {user: accountUser} = useAppSelector(state => state.auth);
   const {} = userApi.useGetByAccountIdQuery({accountId: accountUser.accountId});
 
-  return <CloudWorkspace />;
+  return <Workspace />;
 };
 
-export default Cloud;
+export default Home;

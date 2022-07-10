@@ -1,19 +1,13 @@
-import {CssBaseline} from '@mui/material';
-import {createTheme, ThemeProvider} from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import StyledEngineProvider from '@mui/material/StyledEngineProvider';
 import React, {FC, useEffect} from 'react';
 import './App.css';
 import AppRouter from './components/AppRouter';
-import Loader from './components/common/Loader';
-import Header from './components/header/Header';
+import PageLoader from './components/Common/PageLoader/PageLoader';
+import Header from './components/Header/Header';
 import {useAppSelector} from './hooks/useAppSelector';
 import {authApi} from './services/auth/AuthService';
 import {setJwtToken} from './utils/jwt';
-
-const theme = createTheme({
-  palette: {
-    mode: 'light'
-  }
-});
 
 const App: FC = () => {
   const {isAuthorized} = useAppSelector(state => state.auth);
@@ -26,11 +20,11 @@ const App: FC = () => {
   }, [data]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <StyledEngineProvider injectFirst>
       <CssBaseline />
       <Header />
-      {isLoading || !isAuthorized ? <Loader /> : <AppRouter />}
-    </ThemeProvider>
+      {isLoading || !isAuthorized ? <PageLoader /> : <AppRouter />}
+    </StyledEngineProvider>
   );
 };
 

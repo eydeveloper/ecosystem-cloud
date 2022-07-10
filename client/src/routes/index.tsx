@@ -1,4 +1,4 @@
-import Cloud from '../pages/Cloud';
+import Home from '../pages/Home';
 
 interface IRoute {
   path: string;
@@ -6,9 +6,9 @@ interface IRoute {
 }
 
 export enum RouteNames {
-  CLOUD = '/'
+  HOME = '/'
 }
 
 export const privateRoutes: IRoute[] = [
-  {path: RouteNames.CLOUD, element: <Cloud />}
+  {path: RouteNames.HOME, element: <Home />}
 ];

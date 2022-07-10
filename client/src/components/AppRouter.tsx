@@ -8,7 +8,7 @@ const AppRouter: FC = () => {
       {privateRoutes.map(({path, element}) =>
         <Route path={path} element={element} key={path}></Route>
       )}
-      <Route path="*" element={<Navigate replace to={RouteNames.CLOUD} />}></Route>
+      <Route path="*" element={<Navigate replace to={RouteNames.HOME} />}></Route>
     </Routes>
   );
 };

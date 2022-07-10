@@ -1,5 +1,6 @@
 import React from 'react';
 
-export interface HasChildren {
+export interface ITypographyProps {
+  className?: string;
   children: React.ReactNode;
 }
