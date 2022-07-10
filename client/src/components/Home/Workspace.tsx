@@ -2,6 +2,7 @@ import CreateNewFolderOutlinedIcon from '@mui/icons-material/CreateNewFolderOutl
 import DeleteIcon from '@mui/icons-material/Delete';
 import FolderIcon from '@mui/icons-material/Folder';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+import {Paper} from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -18,10 +19,10 @@ import {fileApi} from '../../services/FileService';
 import {openCreateDirectoryDialog} from '../../store/reducers/file';
 import TypographyVariantH6 from '../Common/Typography/_variant/Typography_variant_h6';
 import CreateDirectoryDialog from '../Dialogs/CreateDirectoryDialog/CreateDirectoryDialog';
-import styles from './Workspace.module.css';
+import styles from './Workspace.module.scss';
 
 const Workspace = () => {
-  const [dense, setDense] = React.useState(false);
+  const [dense] = React.useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(-1);
 
   const {user} = useAppSelector(state => state.user);
@@ -54,7 +55,7 @@ const Workspace = () => {
 
       <Box className={styles.TableContainer}>
         <Box className={styles.TableHeader}>
-          <TypographyVariantH6>
+          <TypographyVariantH6 className={styles.TableHeaderTitle}>
             Файлы
           </TypographyVariantH6>
           <IconButton>
@@ -62,7 +63,7 @@ const Workspace = () => {
           </IconButton>
         </Box>
 
-        <List className={styles.TableList} dense={dense}>
+        <List dense={dense}>
           <ListItem className={styles.TableListHeader}>
             <ListItemText
               className={styles.TableListColumn}
@@ -78,6 +79,7 @@ const Workspace = () => {
             />
           </ListItem>
 
+          <Box className={styles.TableList}>
           {isSuccess && files.map((file, index) =>
             <ListItemButton
               className={styles.TableListItemButton}
@@ -103,6 +105,7 @@ const Workspace = () => {
               </ListItem>
             </ListItemButton>
           )}
+          </Box>
         </List>
       </Box>
 

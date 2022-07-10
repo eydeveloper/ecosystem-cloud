@@ -26,9 +26,22 @@
   margin-left: 8px;
 }
 
+.TableHeaderTitle {
+  user-select: none;
+}
+
 .TableList {
-  max-height: calc(100vh - 140px);
-  overflow-y: scroll;
+  overflow-y: auto;
+  max-height: calc(100vh - 200px);
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+  }
 }
 
 .TableListHeader {
@@ -37,6 +50,7 @@
 
 .TableListColumn {
   width: 25%;
+  user-select: none;
 }
 
 .TableListColumn:first-child {

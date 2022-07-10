@@ -1,7 +1,7 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import StyledEngineProvider from '@mui/material/StyledEngineProvider';
 import React, {FC, useEffect} from 'react';
-import './App.css';
+import './App.scss';
 import AppRouter from './components/AppRouter';
 import PageLoader from './components/Common/PageLoader/PageLoader';
 import Header from './components/Header/Header';

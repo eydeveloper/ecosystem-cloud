@@ -11,7 +11,7 @@ import {IFile} from '../../../models/IFile';
 import {fileApi} from '../../../services/FileService';
 import {closeCreateDirectoryDialog} from '../../../store/reducers/file';
 import TextFieldVariantStandard from '../../Common/TextField/_variant/TextField_variant_standart';
-import styles from './CreateDirectoryDialog.module.css';
+import styles from './CreateDirectoryDialog.module.scss';
 
 export default function CreateDirectoryDialog() {
   const {user} = useAppSelector(state => state.user);

@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 import {useAppSelector} from '../../hooks/useAppSelector';
 import ButtonVariantContained from '../Common/Button/_variant/Button_variant_contained';
 import TypographyVariantH6 from '../Common/Typography/_variant/Typography_variant_h6';
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import HeaderMenu from './HeaderMenu/HeaderMenu';
 
 const Header: FC = () => {

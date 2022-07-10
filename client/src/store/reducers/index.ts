@@ -2,8 +2,10 @@ import auth from './auth';
 import file from './file';
 import user from './user';
 
-export default {
+const reducers = {
   auth,
   file,
   user
 };
+
+export default reducers;

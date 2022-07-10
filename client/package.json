@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.2",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "sass": "^1.53.0"
   }
 }

@@ -7,7 +7,7 @@ import React, {FC, useState} from 'react';
 import {useAppDispatch} from '../../../hooks/useAppDispatch';
 import {useAppSelector} from '../../../hooks/useAppSelector';
 import {logout} from '../../../store/reducers/auth';
-import styles from './HeaderMenu.module.css'
+import styles from './HeaderMenu.module.scss';
 
 const HeaderMenu: FC = () => {
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -53,10 +53,10 @@ const HeaderMenu: FC = () => {
         keepMounted
       >
         <MenuItem onClick={handleAccountClick}>
-            Управление аккаунтом
+          Управление аккаунтом
         </MenuItem>
         <MenuItem onClick={handleLogoutClick}>
-            Выйти
+          Выйти
         </MenuItem>
       </Menu>
     </React.Fragment>
