@@ -31,6 +31,7 @@ export default function CreateDirectoryDialog() {
       parentId: currentDirectory.id
     } as IFile).unwrap();
     dispatch(closeCreateDirectoryDialog());
+    setDirectoryName('Без названия');
   };
 
   const handleCloseCreateDirectoryDialog = () => {

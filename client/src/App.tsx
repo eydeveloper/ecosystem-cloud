@@ -3,7 +3,7 @@ import StyledEngineProvider from '@mui/material/StyledEngineProvider';
 import React, {FC, useEffect} from 'react';
 import './App.scss';
 import AppRouter from './components/AppRouter';
-import PageLoader from './components/Common/PageLoader/PageLoader';
+import PageLoader from './components/Common/Loader/PageLoader/PageLoader';
 import Header from './components/Header/Header';
 import {useAppSelector} from './hooks/useAppSelector';
 import {authApi} from './services/AuthService';

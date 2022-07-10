@@ -1,14 +1,14 @@
 import {CircularProgress} from '@mui/material';
 import Box from '@mui/material/Box';
 import React from 'react';
-import styles from './PageLoader.module.scss';
+import styles from './Loader.module.scss';
 
-const PageLoader = () => {
+const Loader = () => {
   return (
-    <Box className={styles['Page-Loader']}>
+    <Box className={styles['Loader']}>
       <CircularProgress />
     </Box>
   );
 };
 
-export default PageLoader;
+export default Loader;
