@@ -13,7 +13,14 @@ export default class FilesController {
     try {
       const {userId, parentId} = request.query;
       const files = await FilesServices.getFiles(userId, parentId);
-      response.json(files);
+
+      response.json(files.map(file => ({
+        id: file.id,
+        name: file.name,
+        type: file.type,
+        createdDate: file.createdDate,
+        size: file.size
+      } as IFile)));
     } catch (error) {
       errorHandler.handleError(error, response);
     }
@@ -25,7 +32,13 @@ export default class FilesController {
   ) {
     try {
       const directory = await FilesServices.createDirectory(request.body);
-      response.json(directory);
+
+      response.json({
+        id: directory.id,
+        name: directory.name,
+        createdDate: directory.createdDate,
+        size: directory.size
+      } as IFile);
     } catch (error) {
       errorHandler.handleError(error, response);
     }

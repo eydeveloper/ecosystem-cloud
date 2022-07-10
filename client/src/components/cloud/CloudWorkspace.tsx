@@ -16,10 +16,9 @@ import CloudListItem from './list/CloudListItem';
 const CloudWorkspace = () => {
   const [dense, setDense] = React.useState(false);
   const [selectedIndex, setSelectedIndex] = React.useState(-1);
-
   const {user} = useAppSelector(state => state.user);
   const {currentDirectory} = useAppSelector(state => state.file);
-  const {data, isLoading} = fileApi.useGetFilesQuery({userId: user.id, parentId: currentDirectory} as IFile);
+  const {data, isSuccess} = fileApi.useGetFilesQuery({userId: user.id, parentId: currentDirectory.id} as IFile);
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -39,11 +38,12 @@ const CloudWorkspace = () => {
 
       <List dense={dense}>
         <CloudListHeader />
-        {data !== undefined && data.map((file, index) =>
+        {isSuccess && data.map((file, index) =>
           <CloudListItem
+            key={file.id}
             index={index}
             name={file.name}
-            type="directory"
+            type={file.type}
             createdDate={new Date(file.createdDate).toLocaleDateString()}
             size={file.size}
             selected={selectedIndex === index}

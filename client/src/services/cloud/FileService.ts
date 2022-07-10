@@ -8,7 +8,7 @@ export const fileApi = createApi({
   }),
   tagTypes: ['File'],
   endpoints: build => ({
-    getFiles: build.query<IFile[], {userId: string, parentId: string}>({
+    getFiles: build.query<IFile[], IFile>({
       query: (arg) => {
         const {userId, parentId} = arg;
         return {

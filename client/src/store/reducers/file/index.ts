@@ -1,10 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {IFile} from '../../../models/IFile';
 import {fileApi} from '../../../services/cloud/FileService';
 import {FileState, GetFilesAction} from './types';
 
 const initialState: FileState = {
   files: [],
-  currentDirectory: {}
+  currentDirectory: {} as IFile
 };
 
 export const fileSlice = createSlice({

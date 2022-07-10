@@ -14,7 +14,12 @@ export default class UsersController {
       const {accountId} = request.query;
       const user = await UsersServices.getByAccountId(accountId);
       await FilesServices.createRootDirectory(user.id.toString());
-      response.json(user);
+
+      response.json({
+        id: user.id,
+        limitSpace: user.limitSpace,
+        usedSpace: user.usedSpace
+      } as IUser);
     } catch (error) {
       errorHandler.handleError(error, response);
     }
