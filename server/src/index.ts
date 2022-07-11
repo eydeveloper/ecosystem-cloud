@@ -1,9 +1,9 @@
 import 'dotenv/config';
 import express, {Express} from 'express';
 import {connect} from 'mongoose';
-import corsMiddleware from './middleware/corsMiddleware';
-import userRouter from './components/users/usersRoutes';
 import filesRouter from './components/files/filesRoutes';
+import userRouter from './components/users/usersRoutes';
+import corsMiddleware from './core/middlewares/corsMiddleware';
 
 const app: Express = express();
 const port: number = Number(process.env.PORT) || 5000;

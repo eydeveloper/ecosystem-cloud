@@ -1,5 +1,5 @@
 import {BaseQueryFn, createApi, FetchArgs, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import {AuthError} from '../errors/AuthError';
+import {IAuthError} from './errors/IAuthError';
 import {IAuth} from '../models/IAuth';
 import {getJwtToken} from '../utils/jwt';
 
@@ -14,7 +14,7 @@ const baseQuery = fetchBaseQuery({
 
     return headers;
   }
-}) as BaseQueryFn<string | FetchArgs, unknown, AuthError>;
+}) as BaseQueryFn<string | FetchArgs, unknown, IAuthError>;
 
 export const authApi = createApi({
   reducerPath: 'authApi',

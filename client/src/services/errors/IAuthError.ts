@@ -1,4 +1,4 @@
-export interface AuthError {
+export interface IAuthError {
   data: {
     message: string;
     errors: []
