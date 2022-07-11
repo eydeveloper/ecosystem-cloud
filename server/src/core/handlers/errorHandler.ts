@@ -11,7 +11,6 @@ class ErrorHandler {
     } else if (error instanceof JsonWebTokenError) {
       response.status(401).json({message: 'Некорректная сигнатура токена.'})
     } else {
-      console.log(error);
       response.status(500).json({message: String(error)});
     }
   };

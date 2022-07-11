@@ -25,7 +25,6 @@ export const authSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.verify.matchFulfilled,
       (state: AuthState, action: VerifyActionSuccess) => {
-        console.log(getJwtToken());
         const user = action.payload.user;
         state.isAuthorized = true;
         state.user = {...user};
@@ -34,7 +33,6 @@ export const authSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.verify.matchRejected,
       (state: AuthState) => {
-        console.log(getJwtToken());
         state.isAuthorized = false;
         window.location.href = `${process.env.REACT_APP_ACCOUNT_URL}/login`;
       }
