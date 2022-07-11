@@ -24,6 +24,8 @@ export default class FilesService {
       parentDirectory = await File.findById(parentId);
     }
 
+    console.log(data);
+
     if (parentDirectory) {
       directory.path = path.join(parentDirectory.path, name);
       FilesService.makeDirectory(directory);

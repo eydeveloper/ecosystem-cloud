@@ -11,8 +11,8 @@ export default class UsersController {
     response: TypedResponse<UserResponse>
   ) {
     try {
-      const {accountId} = request.query;
-      const user = await UsersService.getByAccountId(accountId);
+      const {id} = request.body.user;
+      const user = await UsersService.getByAccountId(id);
       await FilesService.createRootDirectory(user.id.toString());
       return response.json(user);
     } catch (error) {
