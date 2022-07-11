@@ -9,7 +9,7 @@ class ErrorHandler {
     } else if (error instanceof TokenExpiredError) {
       response.status(401).json({message: 'Срок действия токена истек.'});
     } else if (error instanceof JsonWebTokenError) {
-      response.status(401).json({message: 'Некорректная сигнатура токена.'})
+      response.status(401).json({message: 'Некорректная сигнатура токена.'});
     } else {
       response.status(500).json({message: String(error)});
     }

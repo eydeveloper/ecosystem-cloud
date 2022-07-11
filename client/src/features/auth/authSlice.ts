@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {getJwtToken, removeJwtToken} from '../../common/utils/jwt';
+import {removeJwtToken} from '../../common/utils/jwt';
 import {User} from '../users/user';
 import {authApi} from './authService';
 import {AuthState, VerifyActionSuccess} from './types';
@@ -32,9 +32,11 @@ export const authSlice = createSlice({
     );
     builder.addMatcher(
       authApi.endpoints.verify.matchRejected,
-      (state: AuthState) => {
-        state.isAuthorized = false;
-        window.location.href = `${process.env.REACT_APP_ACCOUNT_URL}/login`;
+      (state: AuthState, action) => {
+        if (action.payload?.status === 401) {
+          state.isAuthorized = false;
+          window.location.href = `${process.env.REACT_APP_ACCOUNT_URL}/login`;
+        }
       }
     );
   }

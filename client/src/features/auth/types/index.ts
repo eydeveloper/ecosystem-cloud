@@ -8,5 +8,5 @@ export interface AuthState {
 }
 
 export interface VerifyActionSuccess {
-  payload: {user: User};
+  payload: { user: User };
 }
