@@ -4,6 +4,6 @@ export interface UserState {
   user: User;
 }
 
-export interface GetByAccountIdAction {
+export interface GetUserAction {
   payload: User;
 }

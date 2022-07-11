@@ -5,7 +5,7 @@ import {usersApi} from '../../users/usersService';
 
 const Home: FC = () => {
   const {user: accountUser} = useAppSelector(state => state.authReducer);
-  usersApi.useGetByAccountIdQuery({accountId: accountUser.id});
+  usersApi.useGetUserQuery({accountId: accountUser.id});
 
   return <Workspace />;
 };

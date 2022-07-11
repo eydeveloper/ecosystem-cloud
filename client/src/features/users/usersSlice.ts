@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {GetByAccountIdAction, UserState} from './types';
+import {GetUserAction, UserState} from './types';
 import {User} from './user';
 import {usersApi} from './usersService';
 
@@ -13,8 +13,8 @@ export const usersSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder.addMatcher(
-      usersApi.endpoints.getByAccountId.matchFulfilled,
-      (state: UserState, action: GetByAccountIdAction) => {
+      usersApi.endpoints.getUser.matchFulfilled,
+      (state: UserState, action: GetUserAction) => {
         const {id, limitSpace, usedSpace} = action.payload;
         state.user.id = id;
         state.user.limitSpace = limitSpace;

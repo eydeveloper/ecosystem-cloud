@@ -18,12 +18,10 @@ export const usersApi = createApi({
   baseQuery,
   tagTypes: ['User'],
   endpoints: build => ({
-    getByAccountId: build.query<User, { accountId: string }>({
-      query: (arg) => {
-        const {accountId} = arg;
+    getUser: build.query<User, {}>({
+      query: () => {
         return {
-          url: '/getByAccountId',
-          params: {accountId}
+          url: '/'
         };
       }
     })
