@@ -14,7 +14,7 @@ const StackItem: FC<StackItemProps> = ({directory}) => {
   };
 
   return (
-    <Button className={styles['Table-Header-Stack-Item']} onClick={handlerItemClick}>
+    <Button className={styles.TableHeaderStackItem} onClick={handlerItemClick}>
       {directory.name}
     </Button>
   );

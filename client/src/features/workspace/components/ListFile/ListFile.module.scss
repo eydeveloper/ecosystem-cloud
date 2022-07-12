@@ -1,0 +1,19 @@
+.TableListItem {
+  padding-right: 5px;
+}
+
+.TableListItemButton {
+  padding-right: 0;
+  padding-left: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.TableListColumn {
+  width: 25%;
+  user-select: none;
+
+  &:first-child {
+    display: flex;
+    width: 50%;
+  }
+}

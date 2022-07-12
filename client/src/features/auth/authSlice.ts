@@ -1,12 +1,12 @@
 import {createSlice} from '@reduxjs/toolkit';
 import {removeJwtToken} from '../../common/utils/jwt';
-import {User} from '../users/user';
+import {AccountUser} from '../users/user';
 import {authApi} from './authService';
 import {AuthState, VerifyActionSuccess} from './types';
 
 const initialState: AuthState = {
   isAuthorized: false,
-  user: {} as User,
+  user: {} as AccountUser,
   isLoading: false,
   error: ''
 };

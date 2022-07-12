@@ -1,4 +1,5 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import axios from 'axios';
 import {getJwtToken} from '../../common/utils/jwt';
 import {File} from './file';
 
@@ -19,8 +20,7 @@ export const filesApi = createApi({
   tagTypes: ['File'],
   endpoints: build => ({
     getFiles: build.query<File[], File>({
-      query: (arg) => {
-        const {userId, parentId} = arg;
+      query: ({userId, parentId}) => {
         return {
           url: '/',
           params: {userId, parentId}
@@ -28,6 +28,7 @@ export const filesApi = createApi({
       },
       providesTags: () => ['File']
     }),
+
     createDirectory: build.mutation<File, File>({
       query: ({name, userId, parentId}) => ({
         url: '/createDirectory',
@@ -39,6 +40,31 @@ export const filesApi = createApi({
           parentId
         }
       }),
+      invalidatesTags: ['File']
+    }),
+
+    uploadFile: build.mutation<File, { file: any, userId: string, parentId: string }>({
+      async queryFn(args) {
+        const {file, userId, parentId} = args;
+        const formData = new FormData();
+
+        formData.append('file', file);
+        formData.append('userId', userId);
+
+        if (parentId) {
+          formData.append('parentId', parentId);
+        }
+
+        return await axios.post(`${process.env.REACT_APP_API_URL}/files/uploadFile`, formData, {
+          headers: {Authorization: `Bearer ${getJwtToken()}`},
+          onUploadProgress: progressEvent => {
+            const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+            if (totalLength) {
+              let progress = Math.round((progressEvent.loaded * 100) / totalLength);
+            }
+          }
+        });
+      },
       invalidatesTags: ['File']
     })
   })

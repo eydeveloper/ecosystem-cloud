@@ -1,6 +1,6 @@
-import {User} from '../users/user';
+import {AccountUser} from '../users/user';
 
 export interface Auth {
   token: string;
-  user: User;
+  user: AccountUser;
 }

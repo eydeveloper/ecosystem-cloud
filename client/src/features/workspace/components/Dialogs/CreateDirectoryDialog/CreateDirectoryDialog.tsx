@@ -45,6 +45,7 @@ export default function CreateDirectoryDialog() {
           value={directoryName}
           onInput={handleInputDirectoryName}
           variant="standard"
+          autoComplete="off"
           autoFocus
         />
       </DialogContent>

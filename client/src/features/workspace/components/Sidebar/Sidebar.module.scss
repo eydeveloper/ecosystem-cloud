@@ -1,0 +1,33 @@
+.Container {
+  margin-right: 16px;
+}
+
+.CreateButton {
+  padding: 12px 20px 12px 10px;
+  text-transform: none;
+  color: inherit;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
+
+.CreateButtonIcon {
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 5px;
+  fill: rgba(0, 0, 0, 0.54);
+}
+
+.CreateMenuItem {
+  padding-right: 48px;
+  padding-left: 24px;
+}
+
+.CreateMenuItemIcon {
+  margin-right: 16px;
+  fill: rgba(0, 0, 0, 0.54);
+}
+
+.CreateMenuItemText {
+  font-size: 14px;
+}

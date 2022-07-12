@@ -3,108 +3,85 @@
   margin: 16px;
 }
 
-.Sidebar {
-  margin-right: 16px;
-}
-
-.Create-Button {
-  padding: 16px;
-  text-transform: none;
-  color: inherit;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
-}
-
 .Table {
   flex: 1;
+}
 
-  &-Header {
-    display: flex;
-    justify-content: space-between;
-    padding-right: 20px;
-    padding-bottom: 8px;
-    border-right: 1px solid rgba(0, 0, 0, 0.12);
+.TableHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+  padding-bottom: 8px;
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
 
-    &-Stack {
-      display: flex;
-      user-select: none;
-      gap: 32px;
+.TableHeaderStack {
+  display: flex;
+  user-select: none;
+  gap: 32px;
+}
 
-      &-Item {
-        position: relative;
-        padding: 5px 10px;
-        color: inherit;
-        text-transform: none;
+.TableHeaderStackItem {
+  position: relative;
+  padding: 5px 10px;
+  color: inherit;
+  text-transform: none;
 
-        &:not(:first-child) {
-          &::before {
-            position: absolute;
-            top: 15px;
-            right: 0;
-            bottom: 0;
-            left: -18px;
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            padding: 3px;
-            content: "";
-            transform: rotate(135deg);
-            border: solid black;
-            border-width: 0 3px 3px 0;
-          }
-        }
-      }
-    }
-
-    &-Controls {
-      display: flex;
-      gap: 10px;
+  &:not(:first-child) {
+    &::before {
+      position: absolute;
+      top: 15px;
+      right: 0;
+      bottom: 0;
+      left: -18px;
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      padding: 3px;
+      content: "";
+      transform: rotate(135deg);
+      border: solid black;
+      border-width: 0 3px 3px 0;
     }
   }
+}
 
-  &-List {
-    padding-top: 0;
+.TableHeaderControls {
+  display: flex;
+  gap: 10px;
+}
 
-    &-Header {
-      border-top: 1px solid rgba(0, 0, 0, 0.12);
-      border-right: 1px solid rgba(0, 0, 0, 0.12);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    }
+.TableList {
+  padding-top: 0;
+}
 
-    &-Column {
-      width: 25%;
-      user-select: none;
+.TableListHeader {
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
 
-      &:first-child {
-        display: flex;
-        width: 50%;
-      }
-    }
+.TableListColumn {
+  width: 25%;
+  user-select: none;
 
-    &-Items {
-      overflow-y: auto;
-      height: calc(100vh - 200px);
-      border-right: 1px solid rgba(0, 0, 0, 0.12);
-      scrollbar-gutter: stable;
+  &:first-child {
+    display: flex;
+    width: 50%;
+  }
+}
 
-      &::-webkit-scrollbar {
-        width: 10px;
-      }
+.TableListItems {
+  overflow-y: auto;
+  height: calc(100vh - 200px);
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+  scrollbar-gutter: stable;
 
-      &::-webkit-scrollbar-thumb {
-        background-color: lightgray;
-      }
-    }
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
 
-    &-Item {
-      padding-right: 5px;
-
-      &-Button {
-        padding-right: 0;
-        padding-left: 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-      }
-    }
+  &::-webkit-scrollbar-thumb {
+    background-color: lightgray;
   }
 }

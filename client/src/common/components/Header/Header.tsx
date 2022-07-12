@@ -17,7 +17,7 @@ const Header: FC = () => {
       <Container className={styles['Container']}>
         <Toolbar className={styles['Toolbar']}>
           <Typography className={styles['Logo']} variant="h6">
-            <Link to="/">Экосистема.Облака</Link>
+            <Link to="/">Экосистема.Облако</Link>
           </Typography>
           {isAuthorized && <HeaderMenu />}
         </Toolbar>

@@ -1,3 +1,5 @@
+import {FileArray} from 'express-fileupload';
+
 interface BaseFile {
   name: string;
   type: string;
@@ -6,6 +8,12 @@ interface BaseFile {
 export interface CreateDirectoryBody extends BaseFile {
   userId: string;
   parentId: string;
+}
+
+export interface UploadFileBody {
+  userId: string;
+  parentId?: string;
+  files: FileArray | undefined;
 }
 
 export interface FileResponse extends BaseFile {

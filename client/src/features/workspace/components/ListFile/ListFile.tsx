@@ -5,19 +5,19 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import {useAppDispatch} from '../../../../common/hooks/useAppDispatch';
 import {pushDirectoryToStack, setCurrentDirectoryId} from '../../../files/filesSlice';
-import styles from '../Workspace/Workspace.module.scss';
+import styles from './ListFile.module.scss';
 import {ListFileProps} from './index';
 
-const ListFile: FC<ListFileProps> = ({file, onClick, selected}) => {
+const ListFile: FC<ListFileProps> = memo(({file, onClick, selected}) => {
   const dispatch = useAppDispatch();
 
   const handlerItemClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event, file.id);
 
-    if (event.detail >= 2) {
+    if (file.type === 'directory' && event.detail >= 2) {
       dispatch(setCurrentDirectoryId(file.id));
       dispatch(pushDirectoryToStack(file));
     }
@@ -25,13 +25,13 @@ const ListFile: FC<ListFileProps> = ({file, onClick, selected}) => {
 
   return (
     <ListItemButton
-      className={styles['Table-List-Item-Button']}
+      className={styles.TableListItemButton}
       key={file.id}
       selected={selected}
       onClick={handlerItemClick}
     >
-      <ListItem className={styles['Table-List-Item']}>
-        <Box className={styles['Table-List-Column']}>
+      <ListItem className={styles.TableListItem}>
+        <Box className={styles.TableListColumn}>
           <ListItemIcon>
             {file.type === 'directory' ? <FolderIcon /> : <InsertDriveFileIcon />}
           </ListItemIcon>
@@ -39,17 +39,17 @@ const ListFile: FC<ListFileProps> = ({file, onClick, selected}) => {
         </Box>
 
         <ListItemText
-          className={styles['Table-List-Column']}
+          className={styles.TableListColumn}
           secondary={new Date(file.createdDate).toLocaleDateString()}
         />
 
         <ListItemText
-          className={styles['Table-List-Column']}
+          className={styles.TableListColumn}
           secondary={file.size || '–'}
         />
       </ListItem>
     </ListItemButton>
   );
-};
+});
 
 export default ListFile;

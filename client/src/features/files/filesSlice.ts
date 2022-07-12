@@ -23,9 +23,11 @@ export const filesSlice = createSlice({
     setCurrentDirectoryId(state: FileState, action: SetCurrentDirectoryIdAction) {
       state.currentDirectory.id = action.payload;
     },
+
     pushDirectoryToStack(state: FileState, action: PushDirectoryToStackAction) {
       state.stack.push(action.payload);
     },
+
     removeDirectoriesFromStack(state: FileState, action: RemoveDirectoriesFromStack) {
       const targetIndex = state.stack.findIndex(
         directory => directory.id === action.payload
@@ -34,11 +36,17 @@ export const filesSlice = createSlice({
         (_, index) => index <= targetIndex
       );
     },
+
     openCreateDirectoryDialog(state: FileState) {
       state.createDirectoryDialog = true;
     },
+
     closeCreateDirectoryDialog(state: FileState) {
       state.createDirectoryDialog = false;
+    },
+
+    addFile(state: FileState, action) {
+      state.files.push(action.payload);
     }
   },
   extraReducers: builder => {
@@ -48,6 +56,7 @@ export const filesSlice = createSlice({
         state.files = action.payload;
       }
     );
+
     builder.addMatcher(
       filesApi.endpoints.createDirectory.matchFulfilled,
       (state: FileState, action: CreateDirectoryAction) => {
@@ -62,7 +71,8 @@ export const {
   pushDirectoryToStack,
   removeDirectoriesFromStack,
   openCreateDirectoryDialog,
-  closeCreateDirectoryDialog
+  closeCreateDirectoryDialog,
+  addFile
 } = filesSlice.actions;
 
 export const filesReducer = filesSlice.reducer;
