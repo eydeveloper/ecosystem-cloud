@@ -8,10 +8,10 @@ import ListItemText from '@mui/material/ListItemText';
 import React, {FC, memo} from 'react';
 import {useAppDispatch} from '../../../../common/hooks/useAppDispatch';
 import {pushDirectoryToStack, setCurrentDirectoryId} from '../../../files/filesSlice';
-import styles from './ListFile.module.scss';
+import styles from './FilesListItem.module.scss';
 import {ListFileProps} from './index';
 
-const ListFile: FC<ListFileProps> = memo(({file, onClick, selected}) => {
+const FilesListItem: FC<ListFileProps> = memo(({file, onClick, selected}) => {
   const dispatch = useAppDispatch();
 
   const handlerItemClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -52,4 +52,4 @@ const ListFile: FC<ListFileProps> = memo(({file, onClick, selected}) => {
   );
 });
 
-export default ListFile;
+export default FilesListItem;

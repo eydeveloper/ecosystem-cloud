@@ -15,37 +15,6 @@
   border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.TableHeaderStack {
-  display: flex;
-  user-select: none;
-  gap: 32px;
-}
-
-.TableHeaderStackItem {
-  position: relative;
-  padding: 5px 10px;
-  color: inherit;
-  text-transform: none;
-
-  &:not(:first-child) {
-    &::before {
-      position: absolute;
-      top: 15px;
-      right: 0;
-      bottom: 0;
-      left: -18px;
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      padding: 3px;
-      content: "";
-      transform: rotate(135deg);
-      border: solid black;
-      border-width: 0 3px 3px 0;
-    }
-  }
-}
-
 .TableHeaderControls {
   display: flex;
   gap: 10px;
@@ -68,20 +37,5 @@
   &:first-child {
     display: flex;
     width: 50%;
-  }
-}
-
-.TableListItems {
-  overflow-y: auto;
-  height: calc(100vh - 200px);
-  border-right: 1px solid rgba(0, 0, 0, 0.12);
-  scrollbar-gutter: stable;
-
-  &::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: lightgray;
   }
 }

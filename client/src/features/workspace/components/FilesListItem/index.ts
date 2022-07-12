@@ -7,4 +7,4 @@ export interface ListFileProps {
   selected: boolean;
 }
 
-export {default} from './ListFile';
+export {default} from './FilesListItem';

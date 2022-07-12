@@ -1,0 +1,24 @@
+.Container {
+  position: relative;
+  padding: 5px 10px;
+  text-transform: none;
+  color: inherit;
+
+  &:not(:first-child) {
+    &::before {
+      position: absolute;
+      top: 15px;
+      right: 0;
+      bottom: 0;
+      left: -18px;
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      padding: 3px;
+      content: "";
+      transform: rotate(135deg);
+      border: solid black;
+      border-width: 0 3px 3px 0;
+    }
+  }
+}

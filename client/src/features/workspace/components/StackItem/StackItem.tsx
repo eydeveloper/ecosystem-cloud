@@ -1,11 +1,11 @@
 import Button from '@mui/material/Button';
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import {useAppDispatch} from '../../../../common/hooks/useAppDispatch';
 import {removeDirectoriesFromStack, setCurrentDirectoryId} from '../../../files/filesSlice';
-import styles from '../Workspace/Workspace.module.scss';
 import {StackItemProps} from './index';
+import styles from './StackItem.module.scss';
 
-const StackItem: FC<StackItemProps> = ({directory}) => {
+const StackItem: FC<StackItemProps> = memo(({directory}) => {
   const dispatch = useAppDispatch();
 
   const handlerItemClick = () => {
@@ -14,10 +14,10 @@ const StackItem: FC<StackItemProps> = ({directory}) => {
   };
 
   return (
-    <Button className={styles.TableHeaderStackItem} onClick={handlerItemClick}>
+    <Button className={styles.Container} onClick={handlerItemClick}>
       {directory.name}
     </Button>
   );
-};
+});
 
 export default StackItem;
