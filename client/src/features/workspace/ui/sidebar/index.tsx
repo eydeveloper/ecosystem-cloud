@@ -32,6 +32,10 @@ export const Sidebar = memo(() => {
     setAnchorElCreate(null);
   };
 
+  const handleClickUploadFile = () => {
+    setAnchorElCreate(null);
+  }
+
   const handleUploadFile = async (event: any) => {
     const files = [...event.target.files];
 
@@ -81,7 +85,7 @@ export const Sidebar = memo(() => {
             type="file"
             style={{display: 'none'}}
           />
-          <MenuItem className={styles.CreateMenuItem}>
+          <MenuItem className={styles.CreateMenuItem} onClick={handleClickUploadFile}>
             <UploadFileIcon className={styles.CreateMenuItemIcon} />
             <Typography className={styles.CreateMenuItemText}>
               Загрузить файлы

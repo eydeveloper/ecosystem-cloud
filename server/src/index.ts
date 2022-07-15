@@ -13,9 +13,8 @@ const port: number = Number(process.env.PORT) || 5000;
 app.use(corsMiddleware);
 app.use(express.json());
 app.use(authMiddleware);
-// app.use();
 app.use('/api/users', userRouter);
-app.use('/api/file', filesRouter);
+app.use('/api/files', filesRouter);
 
 const start = async () => {
   try {
