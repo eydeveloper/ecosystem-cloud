@@ -1,13 +1,7 @@
-import {UploadedFile} from 'express-fileupload';
-import * as fs from 'fs';
-import path from 'path';
-import {AppError} from '../../core/errors/appError';
 import {errorHandler} from '../../core/handlers/errorHandler';
 import {TypedRequestBody} from '../../core/types/typedRequestBody';
 import {TypedRequestQuery} from '../../core/types/typedRequestQuery';
 import {TypedResponse} from '../../core/types/typedResponse';
-import User from '../users/user';
-import File from './file';
 import FilesService from './filesService';
 import {CreateDirectoryBody, FileResponse, UploadFileBody} from './types';
 
@@ -42,10 +36,9 @@ export default class FilesController {
     response: TypedResponse<FileResponse>
   ) {
     try {
-      console.log(request.files);
-      const {userId, parentId} = request.body;
+      const {userId, parentId, fileName} = request.body;
       const file = await FilesService.uploadFile({
-        userId, parentId, files: request.files
+        userId, parentId, fileName, files: request.files
       });
       return response.json(file);
     } catch (error) {

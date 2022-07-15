@@ -1,18 +1,15 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {authApi} from '../features/auth/authService';
-import {authReducer} from '../features/auth/authSlice';
-import {filesApi} from '../features/files/filesService';
-import {filesReducer} from '../features/files/filesSlice';
-import {usersApi} from '../features/users/usersService';
-import {usersReducer} from '../features/users/usersSlice';
+import {fileModel} from 'entities/file';
+import {userModel} from 'entities/user';
+import {viewerModel} from 'entities/viewer';
 
 const rootReducer = combineReducers({
-  authReducer,
-  filesReducer,
-  usersReducer,
-  [authApi.reducerPath]: authApi.reducer,
-  [filesApi.reducerPath]: filesApi.reducer,
-  [usersApi.reducerPath]: usersApi.reducer
+  fileReducer: fileModel.reducer,
+  userReducer: userModel.reducer,
+  viewerReducer: viewerModel.reducer,
+  [fileModel.api.reducerPath]: fileModel.api.reducer,
+  [userModel.api.reducerPath]: userModel.api.reducer,
+  [viewerModel.api.reducerPath]: viewerModel.api.reducer
 });
 
 export const setupStore = () => {
@@ -20,9 +17,9 @@ export const setupStore = () => {
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware()
-        .concat(authApi.middleware)
-        .concat(filesApi.middleware)
-        .concat(usersApi.middleware)
+        .concat(userModel.api.middleware)
+        .concat(fileModel.api.middleware)
+        .concat(viewerModel.api.middleware)
   });
 };
 

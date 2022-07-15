@@ -13,7 +13,6 @@ export default class UsersController {
   ) {
     try {
       const {id} = request.body.user;
-      console.log(request.body.user);
       const user = await UsersService.getOrCreateByAccountId(String(id));
       await FilesService.createRootDirectory(user.id.toString());
       return response.json(user);

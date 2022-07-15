@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(authMiddleware);
 // app.use();
 app.use('/api/users', userRouter);
-app.use('/api/files', filesRouter);
+app.use('/api/file', filesRouter);
 
 const start = async () => {
   try {

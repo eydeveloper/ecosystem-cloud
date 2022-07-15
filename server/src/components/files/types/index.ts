@@ -13,6 +13,7 @@ export interface CreateDirectoryBody extends BaseFile {
 export interface UploadFileBody {
   userId: string;
   parentId?: string;
+  fileName: string;
   files: FileArray | undefined;
 }
 

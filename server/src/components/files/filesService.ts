@@ -1,4 +1,4 @@
-import {FileArray, UploadedFile} from 'express-fileupload';
+import {UploadedFile} from 'express-fileupload';
 import * as fs from 'fs';
 import path from 'path';
 import {AppError} from '../../core/errors/appError';
@@ -43,7 +43,7 @@ export default class FilesService {
   }
 
   static async uploadFile(data: UploadFileBody): Promise<FileResponse> {
-    const {userId, parentId, files} = data;
+    const {userId, parentId, fileName, files} = data;
 
     if (!files?.file) {
       throw new AppError('Не удалось загрузить файл.', 400);
@@ -65,9 +65,9 @@ export default class FilesService {
 
     let uploadedFilePath;
     if (parentDirectory) {
-      uploadedFilePath = path.resolve('upload', 'files', String(user.id), parentDirectory.path, uploadedFile.name);
+      uploadedFilePath = path.resolve('upload', 'files', String(user.id), parentDirectory.path, fileName);
     } else {
-      uploadedFilePath = path.resolve('upload', 'files', String(user.id), uploadedFile.name);
+      uploadedFilePath = path.resolve('upload', 'files', String(user.id), fileName);
     }
 
     if (fs.existsSync(uploadedFilePath)) {
@@ -78,7 +78,7 @@ export default class FilesService {
 
     const type = uploadedFile.name.split('.').pop();
     const file = new File({
-      name: uploadedFile.name,
+      name: fileName,
       type,
       size: uploadedFile.size,
       path: parentDirectory?.path,
