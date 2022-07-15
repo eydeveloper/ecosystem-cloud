@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {fileModel} from 'entities/file';
-import {userModel} from 'entities/user';
-import {viewerModel} from 'entities/viewer';
+import {fileModel} from '../entities/file';
+import {userModel} from '../entities/user';
+import {viewerModel} from '../entities/viewer';
 
 const rootReducer = combineReducers({
   fileReducer: fileModel.reducer,
